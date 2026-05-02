@@ -1,123 +1,157 @@
-API Wizards
-API Wizards is a FastAPI backend project for a photo-sharing service. It includes user authentication, JWT tokens, role-based access, photo metadata workflows, comments, tags, PostgreSQL migrations, and Docker-based local infrastructure.
+# 🚀 API Wizards
 
-The project is prepared to be reviewed and run locally without requiring a paid cloud deployment.
+<p align="center">
+  <b>Production-ready FastAPI backend for a photo-sharing platform</b>
+</p>
 
-Tech Stack
-Python 3.11+
-FastAPI
-SQLAlchemy async ORM
-PostgreSQL
-Alembic
-Docker Compose
-JWT authentication
-Cloudinary integration for photo storage and transformations
-Redis-ready configuration
-Swagger / OpenAPI documentation
-Features
-User signup and login
-JWT access and refresh tokens
-Email confirmation flow
-Roles: admin, moderator, user
-User profile lookup
-Photo upload and management
-Photo resize, crop, format conversion, filters, text overlay, metadata
-Comments for photos
-Tags for photos
-QR code generation for transformed photo links
-Database migrations with Alembic
-Project Structure
-.
-|-- main.py
-|-- src
-|   |-- conf
-|   |-- database
-|   |-- repository
-|   |-- routes
-|   |-- schemas
-|   `-- services
-|-- migrations
-|-- docs
-|-- docker-compose.yml
-|-- alembic.ini
-|-- requirements.txt
-|-- .env.example
-`-- DEPLOYMENT.md
-Local Setup
-Clone the repository:
+<p align="center">
+  <img src="https://img.shields.io/badge/FastAPI-async-green">
+  <img src="https://img.shields.io/badge/PostgreSQL-db-blue">
+  <img src="https://img.shields.io/badge/Docker-ready-blue">
+  <img src="https://img.shields.io/badge/Python-3.11-blue">
+</p>
 
+---
+
+## ⚡ About
+
+**API Wizards** — це повноцінний backend сервіс, який демонструє реальну production-архітектуру:
+
+* авторизація з JWT
+* ролі користувачів
+* робота з фото + трансформації
+* масштабована структура (service / repository)
+
+Це не просто pet-project — це **демонстрація рівня Junior+ / Middle backend developer**.
+
+---
+
+## 🧱 Tech Stack
+
+* **FastAPI**
+* **SQLAlchemy (async)**
+* **PostgreSQL**
+* **Alembic**
+* **Docker Compose**
+* **Redis (ready)**
+* **Cloudinary**
+
+---
+
+## ✨ Features
+
+### 🔐 Auth & Users
+
+* Реєстрація / логін
+* JWT (access + refresh)
+* Email підтвердження
+* Ролі: `admin`, `moderator`, `user`
+
+### 🖼 Photos
+
+* Завантаження фото
+* Resize / crop / filters
+* Форматування
+* Text overlay
+* Метадані
+
+### 💬 Social
+
+* Коментарі
+* Теги
+
+### ⚙️ System
+
+* QR-коди
+* Alembic міграції
+* Swagger docs
+
+---
+
+## 📁 Architecture
+
+```text
+Client → FastAPI → Services → Repository → PostgreSQL
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. Clone
+
+```bash
 git clone https://github.com/AndreySamoylenko15/API_Wizards_.git
 cd API_Wizards_
-Create .env from the example:
+```
 
+### 2. Env
+
+```bash
 cp .env.example .env
-For local development, use values like these:
+```
 
-POSTGRES_DB=api_wizards
-POSTGRES_USER=api_wizards
-POSTGRES_PASSWORD=api_wizards
-POSTGRES_PORT=5432
-POSTGRES_DOMAIN=localhost
+### 3. Run services
 
-SECRET_KEY_JWT=local_dev_secret_key_change_me
-ALGORITHM=HS256
-
-MAIL_USERNAME=dev@example.com
-MAIL_PASSWORD=dev_password
-MAIL_FROM=dev@example.com
-MAIL_PORT=587
-MAIL_SERVER=localhost
-
-REDIS_DOMAIN=localhost
-REDIS_PORT=6379
-REDIS_PASSWORD=
-
-cloud_name=
-api_key=
-api_secret=
-Start PostgreSQL and Redis:
-
+```bash
 docker compose up -d
-Install dependencies:
+```
 
+### 4. Install
+
+```bash
 python -m pip install -r requirements.txt
-Apply migrations:
+```
 
+### 5. Migrations
+
+```bash
 python -m alembic upgrade head
-Run the API:
+```
 
-python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
-Open API documentation:
+### 6. Start API
 
-http://127.0.0.1:8000/docs
-Quick API Check
-Create a user:
+```bash
+python -m uvicorn main:app --reload
+```
 
+---
+
+## 📚 API Docs
+
+👉 http://127.0.0.1:8000/docs
+
+---
+
+## 🧪 Example Request
+
+```bash
 curl -X POST "http://127.0.0.1:8000/api/auth/signup" \
-  -H "Content-Type: application/json" \
-  -d "{\"username\":\"andreydev\",\"email\":\"andreydev@example.com\",\"password\":\"password123\"}"
-Read user profile:
+-H "Content-Type: application/json" \
+-d '{"username":"andreydev","email":"andreydev@example.com","password":"password123"}'
+```
 
-curl "http://127.0.0.1:8000/api/user_option/username?username=andreydev"
-Expected profile response includes:
+---
 
-{
-  "username": "andreydev",
-  "email": "andreydev@example.com",
-  "role": "admin",
-  "photos_uploaded": 0
-}
-Notes
-The first registered user becomes admin.
-Login requires confirmed=true for the user.
-Photo upload and transformations require valid Cloudinary credentials.
-This repository is optimized for local portfolio review. A paid cloud deployment is not required to evaluate the backend.
+## ⚠️ Notes
 
+* Перший користувач → `admin`
+* Потрібне підтвердження email
+* Cloudinary потрібен для фото
 
+---
 
+## 🎯 What this project proves
 
+* Вміння будувати backend-архітектуру
+* Робота з async
+* JWT + security flows
+* Робота з медіа
 
 
 
 
 
+---
+
+⭐ Якщо проєкт корисний — постав зірку
